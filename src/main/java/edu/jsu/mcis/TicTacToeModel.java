@@ -19,7 +19,7 @@ public class TicTacToeModel {
 	}
 	
 	public void printBoard() {
-        System.out.println("-------------");
+        System.out.println("-------------"); 
         for (int i = 0; i < 3; i++) {
             System.out.print("| ");
             for (int j = 0; j < 3; j++) {
@@ -50,7 +50,7 @@ public class TicTacToeModel {
 		return this.winner;
 	}
 	
-	public boolean boardIsFull() {
+	private boolean boardIsFull() {
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
 				if(getMark(i, j) == Mark.EMPTY) {
@@ -62,7 +62,8 @@ public class TicTacToeModel {
 	}
 	
 	private void checkGameOver() {
-		for(int i=0; i<3; i++) {
+		//Check Horizontal and Vertical for winner
+		for(int i = 0; i < 3; i++) {
 			boolean h = getMark(i, 0) == getMark(i, 1) && getMark(i, 1) == getMark(i, 2);
 			boolean v = getMark(0, i) == getMark(1, i) && getMark(1, i) == getMark(2, i);
 			if(h && getMark(i, 0) != Mark.EMPTY) {
@@ -72,7 +73,7 @@ public class TicTacToeModel {
 				this.winner = getMark(0, i).toString();
 			}
 		}
-		
+		//Check Diagonals for winner
 		if(this.winner == null) {
 			if(getMark(0, 0) == getMark(1, 1) && getMark(1, 1) == getMark(2, 2) && getMark(0, 0) != Mark.EMPTY) {
 				this.winner = getMark(0, 0).toString();
